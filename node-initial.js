@@ -28,7 +28,7 @@ function createDirectories() {
 
 // Create empty files
 function createFiles() {
-  const files = ["src/app.js", ".env", "README.md"];
+  const files = ["src/app.js", ".env", "README.md", ".gitignore"];
 
   files.forEach((file) => {
     const filePath = path.join(__dirname, file);
@@ -93,25 +93,7 @@ ${directories.join("\n")}
   npm start
   \`\`\`
 
-## Features
 
-- **Modular structure**: Organized code for scalability.
-- **Middleware support**: Custom middleware can be added easily.
-- **Error handling**: Centralized error handling setup.
-
-## Contributing
-
-Follow these steps to contribute:
-
-1. Fork the project.
-2. Create a new branch (\`git checkout -b feature-branch\`).
-3. Make your changes.
-4. Push to the branch (\`git push origin feature-branch\`).
-5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 `;
 
   const readmePath = path.join(__dirname, "README.md");
@@ -119,7 +101,49 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
   console.log("Created: README.md");
 }
 
+// Create .gitignore content
+function createGitignore() {
+  const gitignoreContent = `
+# Node.js modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# MacOS
+.DS_Store
+
+# Miscellaneous
+*.swp
+  `;
+
+  const gitignorePath = path.join(__dirname, ".gitignore");
+  fs.writeFileSync(gitignorePath, gitignoreContent);
+  console.log("Created: .gitignore");
+}
+
+// Create package.json if it doesn't exist
+function createPackageJson() {
+  const packageJsonPath = path.join(__dirname, "package.json");
+  if (!fs.existsSync(packageJsonPath)) {
+    const execSync = require("child_process").execSync;
+    execSync("npm init -y", { stdio: "inherit" });
+    console.log("Initialized package.json");
+  } else {
+    console.log("package.json already exists");
+  }
+}
+
 // Run the functions
 createDirectories();
 createFiles();
 createReadme();
+createGitignore();
+createPackageJson();
