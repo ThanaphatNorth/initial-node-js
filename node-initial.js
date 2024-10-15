@@ -28,11 +28,11 @@ function createDirectories() {
 
 // Create empty files
 function createFiles() {
-  const files = ["src/app.js", ".env", "README.md", ".gitignore"];
+  const files = ["src/app.js", ".env"];
 
   files.forEach((file) => {
     const filePath = path.join(__dirname, file);
-    if (!fs.existsSync(filePath)) {
+    if (checkFileExisting(filePath)) {
       fs.writeFileSync(filePath, "");
       console.log(`Created: ${file}`);
     } else {
@@ -97,8 +97,20 @@ ${directories.join("\n")}
 `;
 
   const readmePath = path.join(__dirname, "README.md");
-  fs.writeFileSync(readmePath, readmeContent);
-  console.log("Created: README.md");
+  if (checkFileExisting(readmePath)) {
+    fs.writeFileSync(readmePath, readmeContent);
+    console.log("Created: README.md");
+  } else {
+    console.log("Exists: README.md");
+  }
+}
+
+function checkFileExisting(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // Create .gitignore content
@@ -125,8 +137,12 @@ yarn-error.log*
   `;
 
   const gitignorePath = path.join(__dirname, ".gitignore");
-  fs.writeFileSync(gitignorePath, gitignoreContent);
-  console.log("Created: .gitignore");
+  if (checkFileExisting(gitignorePath)) {
+    fs.writeFileSync(gitignorePath, gitignoreContent);
+    console.log("Created: .gitignore");
+  } else {
+    console.log("Exists: .gitignore");
+  }
 }
 
 // Create package.json if it doesn't exist
