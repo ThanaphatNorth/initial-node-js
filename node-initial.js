@@ -151,6 +151,9 @@ function createPackageJson() {
   if (!fs.existsSync(packageJsonPath)) {
     const execSync = require("child_process").execSync;
     execSync("npm init -y", { stdio: "inherit" });
+    execSync("npm install express dotenv node-cache body-parser cors", {
+      stdio: "inherit",
+    });
     console.log("Initialized package.json");
   } else {
     console.log("package.json already exists");
