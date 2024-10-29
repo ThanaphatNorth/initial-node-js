@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
 
@@ -16,7 +17,7 @@ const directories = [
 // Function to create directories
 function createDirectories() {
   directories.forEach((dir) => {
-    const dirPath = path.join(__dirname, dir);
+    const dirPath = path.join(process.cwd(), dir);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
       console.log(`Created: ${dir}`);
@@ -31,7 +32,7 @@ function createFiles() {
   const files = ["src/app.js", ".env"];
 
   files.forEach((file) => {
-    const filePath = path.join(__dirname, file);
+    const filePath = path.join(process.cwd(), file);
     if (checkFileExisting(filePath)) {
       fs.writeFileSync(filePath, "");
       console.log(`Created: ${file}`);
@@ -96,7 +97,7 @@ ${directories.join("\n")}
 
 `;
 
-  const readmePath = path.join(__dirname, "README.md");
+  const readmePath = path.join(process.cwd(), "README.md");
   if (checkFileExisting(readmePath)) {
     fs.writeFileSync(readmePath, readmeContent);
     console.log("Created: README.md");
@@ -106,11 +107,7 @@ ${directories.join("\n")}
 }
 
 function checkFileExisting(filePath) {
-  if (!fs.existsSync(filePath)) {
-    return true;
-  } else {
-    return false;
-  }
+  return !fs.existsSync(filePath);
 }
 
 // Create .gitignore content
@@ -136,7 +133,7 @@ yarn-error.log*
 *.swp
   `;
 
-  const gitignorePath = path.join(__dirname, ".gitignore");
+  const gitignorePath = path.join(process.cwd(), ".gitignore");
   if (checkFileExisting(gitignorePath)) {
     fs.writeFileSync(gitignorePath, gitignoreContent);
     console.log("Created: .gitignore");
@@ -147,11 +144,12 @@ yarn-error.log*
 
 // Create package.json if it doesn't exist
 function createPackageJson() {
-  const packageJsonPath = path.join(__dirname, "package.json");
+  const packageJsonPath = path.join(process.cwd(), "package.json");
   if (!fs.existsSync(packageJsonPath)) {
     const execSync = require("child_process").execSync;
-    execSync("npm init -y", { stdio: "inherit" });
+    execSync("npm init -y", { cwd: process.cwd(), stdio: "inherit" });
     execSync("npm install express dotenv node-cache body-parser cors", {
+      cwd: process.cwd(),
       stdio: "inherit",
     });
     console.log("Initialized package.json");
@@ -159,10 +157,18 @@ function createPackageJson() {
     console.log("package.json already exists");
   }
 }
+function executeGitInit() {
+  const execSync = require("child_process").execSync;
+  execSync("git init", {
+    cwd: process.cwd(),
+    stdio: "inherit",
+  });
+}
 
 // Run the functions
 createDirectories();
 createFiles();
 createReadme();
+executeGitInit();
 createGitignore();
 createPackageJson();
