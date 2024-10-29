@@ -77,6 +77,9 @@ package.json
 ## Features
 
 **Automated Directory Structure**: Creates all necessary folders for controllers, models, routes, services, middleware, config, and utils.
+
 **File Initialization**: Generates app.js, .env, .gitignore, and README.md with base content.
+
 **Package Management**: Automatically initializes package.json and installs essential packages.
+
 **Git Initialization**: Sets up a Git repository if it doesn’t already exist.
