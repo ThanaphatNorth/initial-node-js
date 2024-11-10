@@ -51,7 +51,7 @@ This script is designed to automate the setup of a basic Node.js project structu
 
 4. **Run the script in the desired project directory**
    ```bash
-   node-js
+   create-node-js
    ```
 
 ## Project Structure

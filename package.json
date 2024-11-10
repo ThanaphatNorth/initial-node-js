@@ -4,7 +4,7 @@
   "description": "",
   "main": "node-initial.js",
   "bin": {
-    "node-js": "./node-initial.js"
+    "create-node-js": "./node-initial.js"
   },
   "scripts": {
     "start": "node your_script.js"
