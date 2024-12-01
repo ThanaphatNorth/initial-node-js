@@ -37,6 +37,12 @@ To install the CLI globally:
 npm install -g initial-node
 ```
 
+if you get the error please try:
+
+```bash
+sudo npm install -g initial-node
+```
+
 ## Usage
 
 Run the following command in the root of your desired project directory:
