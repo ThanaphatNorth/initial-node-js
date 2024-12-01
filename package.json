@@ -2,15 +2,22 @@
   "name": "initial-node",
   "version": "1.0.0",
   "description": "",
-  "repository": "https://github.com/ThanaphatNorth/initial-node-js",
   "main": "node-initial.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThanaphatNorth/initial-node-js"
+  },
   "bin": {
     "create-node-js": "./node-initial.js"
   },
   "scripts": {
     "start": "node your_script.js"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "initial node",
+    "structure"
+  ],
   "author": "Tha.North",
-  "license": "ISC"
+  "license": "MIT"
 }

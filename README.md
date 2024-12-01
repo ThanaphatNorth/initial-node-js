@@ -1,64 +1,20 @@
-# Setup Node JS Project
+# Initial-Node
 
-# Project Setup Script
+`initial-node` is a CLI tool for initializing a well-structured Node.js project with predefined directories, files, and configurations. It helps developers set up a standard project structure quickly, saving time and ensuring consistency.
 
-This Node.js script initializes a project structure by creating essential directories, files, and configuration elements for a standard Express-based application.
+## Features
 
-## Table of Contents
-
-- [Setup Node JS Project](#setup-node-js-project)
-- [Project Setup Script](#project-setup-script)
-  - [Table of Contents](#table-of-contents)
-  - [Project Overview](#project-overview)
-    - [Key Technologies](#key-technologies)
-  - [Installation](#installation)
-  - [Project Structure](#project-structure)
-  - [Features](#features)
-
-## Project Overview
-
-This script is designed to automate the setup of a basic Node.js project structure, including directory creation, initialization of `package.json`, setting up common files like `.env`, `.gitignore`, `README.md`, and even initializing a Git repository if not already present.
-
-### Key Technologies
-
-- **Node.js** for executing the script
-- **Express.js** framework for server setup
-- **Dotenv** for environment variable management
-
-## Installation
-
-1. **Clone the repository** (or create your own directory):
-
-   ```bash
-   git clone https://github.com/yourusername/yourproject.git
-   cd yourproject
-
-   ```
-
-2. **Make the script executable** (if needed):
-
-   ```bash
-    chmod +x setup.js
-
-   ```
-
-3. **Link the script globally to use it in any directory**
-
-   ```bash
-   npm link
-
-   ```
-
-4. **Run the script in the desired project directory**
-   ```bash
-   create-node-js
-   ```
+- Automatically creates commonly used directories and files for a Node.js project.
+- Generates a `.gitignore` file.
+- Creates a `package.json` if it doesn’t exist.
+- Initializes a git repository.
+- Installs essential dependencies (`express`, `dotenv`, `node-cache`, `body-parser`, and `cors`).
 
 ## Project Structure
 
-The generated project structure is as follows:
+The tool generates the following directory and file structure:
 
-```plaintext
+```
 src/
   ├── controllers/
   ├── models/
@@ -70,16 +26,64 @@ src/
   └── app.js
 .env
 .gitignore
-README.md
-package.json
+package.json (if not already created)
 ```
 
-## Features
+## Installation
 
-**Automated Directory Structure**: Creates all necessary folders for controllers, models, routes, services, middleware, config, and utils.
+To install the CLI globally:
 
-**File Initialization**: Generates app.js, .env, .gitignore, and README.md with base content.
+```bash
+npm install -g initial-node
+```
 
-**Package Management**: Automatically initializes package.json and installs essential packages.
+## Usage
 
-**Git Initialization**: Sets up a Git repository if it doesn’t already exist.
+Run the following command in the root of your desired project directory:
+
+```bash
+create-node-js
+```
+
+This will create the project structure, initialize Git, and set up essential files.
+
+### Example
+
+1. Navigate to your desired directory:
+
+   ```bash
+   cd my-new-project
+   ```
+
+2. Run the tool:
+
+   ```bash
+   create-node-js
+   ```
+
+3. After execution, you’ll see the following:
+
+   - Predefined directories and files created.
+   - `.gitignore` added.
+   - `package.json` initialized and dependencies installed.
+
+4. Start building your application!
+
+## Requirements
+
+- Node.js (>=12.0.0)
+- npm (>=6.0.0)
+
+## Contributing
+
+Contributions are welcome! If you'd like to improve this package:
+
+1. Fork the repository: [initial-node-js](https://github.com/ThanaphatNorth/initial-node-js)
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
