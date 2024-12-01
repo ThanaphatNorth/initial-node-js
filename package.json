@@ -1,7 +1,8 @@
 {
-  "name": "util-node",
+  "name": "initial-node",
   "version": "1.0.0",
   "description": "",
+  "repository": "https://github.com/ThanaphatNorth/initial-node-js",
   "main": "node-initial.js",
   "bin": {
     "create-node-js": "./node-initial.js"
@@ -10,6 +11,6 @@
     "start": "node your_script.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tha.North",
   "license": "ISC"
 }
